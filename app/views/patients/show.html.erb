@@ -1,0 +1,28 @@
+<p>
+  <strong>Name:</strong>
+  <%= @patient.first_name %>
+  <%= @patient.last_name %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") %>
+</p>
+
+<p>
+  <strong>Symptoms:</strong>
+  <%= @patient.symptoms %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @patient.gender %>
+</p>
+
+<p>
+  <strong>Blood Type:</strong>
+  <%= @patient.blood_type %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', root_path %>

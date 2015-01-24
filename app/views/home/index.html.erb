@@ -1,0 +1,13 @@
+<h2>Hospital Patient Tracker</h2>
+
+<%= link_to "Add New Patient", new_patient_path %>
+
+<h4>Patient List</h4>
+
+<% @patients.each do |patient| %>
+    <%= patient.first_name %>
+    <%= patient.last_name %>
+    <%= link_to "Edit", edit_patient_path(patient) %>
+    <%= link_to "Delete", patient, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+<% end %>
