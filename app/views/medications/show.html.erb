@@ -1,5 +1,7 @@
 <h2>Patient Medication Detial Page</h2>
 
+<%= link_to "Add Medication", new_patient_medication_path(@patient) %>
+
 <ul>
     <% @medications.each do |medication| %>
       <li>

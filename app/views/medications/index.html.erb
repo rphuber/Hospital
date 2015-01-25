@@ -1,5 +1,7 @@
 <h2><%= @patient.first_name %> <%= @patient.last_name %>'s Medication List</h2>
 <%= link_to "Back to Patient Detail", patient_path(params[:patient_id]) %>
+
+<%= link_to "Add Medication", new_patient_medication_path(@patient) %>
 <ul>
     <% @medications.each do |medication| %>
       <li>
