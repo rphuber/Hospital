@@ -1,0 +1,18 @@
+<%= form_for [@patient, @medication] do |f| %>
+  <% if @medication.errors.any? %>
+    <% @medication.errors.full_messages.each do |message| %>
+      <%= message %>
+      <br>
+    <% end %>
+  <% end %>
+  
+  <%= f.label :name, "Name of Medication" %>
+  <%= f.text_field :name %> <br>
+  <%= f.label :dosage, "Dosage Amount in mg." %>
+  <%= f.text_field :dosage %> <br>
+  <%= f.label :frequency, "Frequency" %>
+  <%= f.text_field :frequency %> <br>
+  
+  <%= f.submit %>
+
+<% end %>

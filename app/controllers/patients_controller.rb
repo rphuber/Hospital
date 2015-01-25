@@ -1,56 +1,45 @@
 class PatientsController < ApplicationController
 
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  def index
+    @patients = Patient.all
+  end
 
   def new
-    @patient = Patient.new  
+    @facility = Facility.find params[:facility_id]
+    @patient = @facility.patients.new  
   end
 
   def show
-    
+    @patient = Patient.find params[:id]
+    @facility = Facility.find @patient.facility_id
+    @medications = @patient.medications
   end
 
   def create
-    @patient = Patient.new(patient_params)
-    # flash
-    if @patient.save
-      flash[:notice] = 'Restaurant was successfully created.'
-      redirect_to root_path
-    else
-      flash[:error] = "Restaurant was NOT saved."
-      render :new
-    end
+    @facility = Facility.find params[:facility_id]
+    @patient = @facility.patients.create patient_params
+    redirect_to facility_path(@facility)
   end
 
   def edit
-    
+    @patient = Patient.find params[:id]
   end
 
   def update
-    respond_to do |format|
-      if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Patient records were successfully updated.' }
-        format.json { render :show, status: :ok, location: @patient }
-      else
-        format.html { render :edit }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
-      end
-    end
+    @patient = Patient.find params[:id]
+    @facility = Facility.find @patient.facility_id
+    @patient.update_attributes patient_params
+    redirect_to facility_path(@facility)
   end
 
   def destroy
-    @patient.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Restaurant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @patient = Patient.find params[:id]
+    @facility = Facility.find @patient.facility_id
+    @patient.delete
+    redirect_to facility_path(@facility)
   end
 
   private
-
-  def set_patient
-    @patient = Patient.find(params[:id])
-  end
   
   def patient_params
     params.require(:patient).permit(

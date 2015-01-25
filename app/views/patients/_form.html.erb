@@ -1,4 +1,4 @@
-<%= form_for(@patient) do |f| %>
+<%= form_for [@facility, @patient] do |f| %>
   <% if @patient.errors.any? %>
     <% @patient.errors.full_messages.each do |message| %>
       <%= message %>
@@ -12,7 +12,7 @@
   <%= f.text_field :last_name %> <br>
   
   <%= f.label :dob, "Date of Birth" %>
-  <%= f.date_select :dob, start_year: 1920 %> <br>
+  <%= f.date_select :dob, start_year: 1920, order:[:month, :day, :year] %> <br>
 
   <%= f.label :symptoms, "Symptoms" %>
   <%= f.text_field :symptoms %> <br>

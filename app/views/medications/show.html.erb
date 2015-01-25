@@ -1,0 +1,13 @@
+<h2>Patient Medication Detial Page</h2>
+
+<ul>
+    <% @medications.each do |medication| %>
+      <li>
+        <%= medication.name %>
+        <%= medication.dosage %>
+        <%= medication.frequency %>
+        <%= link_to "Edit", edit_patient_medications_path(@patient, @medication) %>
+      </li>
+
+    <% end %>
+  </ul>

@@ -1,3 +1,8 @@
+<h2>Patient Record Detail</h2>
+
+<%= link_to "Back to Patient List", facility_path(@facility)  %>
+<br>
+
 <p>
   <strong>Name:</strong>
   <%= @patient.first_name %>
@@ -24,5 +29,20 @@
   <%= @patient.blood_type %>
 </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', root_path %>
+<%= link_to 'Edit Details', edit_patient_path(@patient) %>
+
+<hr>
+
+<h3>Patient Medications</h3>
+
+<%= link_to "Add Medication", new_patient_medication_path(@patient) %>
+<%= link_to "View/Edit Medications", patient_medications_path(@patient) %>
+  <ul>
+    <% @medications.each do |medication| %>
+      <li>
+        <%= medication.name %>
+        <%= medication.dosage %>
+        <%= medication.frequency %>
+      </li>
+    <% end %>
+  </ul>
