@@ -1,0 +1,40 @@
+!!! 5
+%html{ :lang => "en"}
+  %head
+    %meta{ :charset => "utf-8" }
+
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+    %title= content_for?(:title) ? yield(:title) : "Untitled"
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tag
+
+  %body
+    .row
+      .large-3.columns
+        %h1
+          %a{:href => "/"}
+            %img{:src => "http://placehold.it/400x100&text=Hospital"}/
+      .large-9.columns
+        %ul.right.button-group
+          %li
+            %a.button{:href => facilities_path} Facilities
+          %li
+            %a.button{:href => "#"} Doctors
+          %li
+            %a.button{:href => "#"} Patients
+          %li
+            %a.button{:href => "#"} Medications
+    .row
+      = yield
+    %footer.row
+      .large-12.columns
+        %hr/
+        .row
+          .large-6.large-offset-6.columns.text-right
+            %p © 2015 Copyright RHDesigns.
+          
+

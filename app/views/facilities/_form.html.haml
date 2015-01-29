@@ -1,0 +1,9 @@
+= form_for(@facility) do |f|
+  - if @facility.errors.any?
+    - @facility.errors.full_messages.each do |message|
+      = message
+      %br/
+  = f.label :name, "Name"
+  = f.text_field :name
+  %br/
+  = f.submit class: "button tiny"

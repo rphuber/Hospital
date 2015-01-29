@@ -10,7 +10,7 @@
           <%= patient.first_name %>
           <%= patient.last_name %>
         </p>
-        <%= link_to "View Patient Details", patient_path(patient) %>
+        <%= link_to "View Patient Details", patient, :edit %>
         <%= link_to "Edit", edit_patient_path(patient) %>
         <%= link_to "Delete", patient, method: :delete, data: { confirm: 'Are you sure?' } %>
         <br>
@@ -18,3 +18,9 @@
   <% end %>
 
 </ul>
+
+<%= link_to "Patient", patient_path(patient) %>
+
+<%= form_for @model do |f| -%>
+  
+<% end -%>

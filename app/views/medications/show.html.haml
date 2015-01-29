@@ -1,0 +1,11 @@
+%h2 Patient Medication Detial Page
+
+= link_to "Add Medication", new_patient_medication_path(@patient)
+
+%ul
+  - @medications.each do |medication|
+    %li
+      = medication.name 
+      = medication.dosage 
+      = medication.frequency 
+      = link_to "Edit", edit_patient_medications_path(@patient, @medication)

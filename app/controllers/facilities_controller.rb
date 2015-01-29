@@ -3,6 +3,7 @@ class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
 
   def index
+    @title = 'Facility Listing'
     @facilities = Facility.all
   end
 
