@@ -25,14 +25,14 @@
         %strong Blood Type:
         = @patient.blood_type
     
-      = link_to "Back to Patient List", facility_path(@facility), class: "button small"
+      = link_to "Back to Patient List", patients_path, class: "button small"
       = link_to 'Edit Details', edit_patient_path(@patient), class: "button small"
       %hr/
     
       %h3 Patient Medications
     
-      = link_to "Add Medication", new_patient_medication_path(@patient), class: "button small"
-      = link_to "Edit Medications", patient_medications_path(@patient), class: "button small"
+      = link_to "Add Medication", new_medication_path, class: "button small"
+      = link_to "Edit Medications", medications_path, class: "button small"
         
       %table
         %thead

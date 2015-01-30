@@ -29,6 +29,20 @@
     .small-10.small-offset-1.column
       = f.label :symptoms, "Symptoms"
       = f.text_area :symptoms
+  
+  .row
+    .small-10.small-offset-1.column
+      = hidden_field_tag 'patient[facility_ids][]', ''
+      - @facilities.each do |facility|
+        = check_box_tag 'patient[facility_ids][]', facility.id, @patient.facilities.include?(facility)
+        = facility.name
+
+  .row
+    .small-10.small-offset-1.column
+      = hidden_field_tag 'patient[medication_ids][]', ''
+      - @medications.each do |medication|
+        = check_box_tag 'patient[medication_ids][]', medication.id, @patient.medications.include?(medication)
+        = medication.name
   .row
     .small-2.small-offset-1.end.column
       = f.submit class: "button small right radius"

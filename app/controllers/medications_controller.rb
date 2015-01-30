@@ -6,12 +6,11 @@ class MedicationsController < ApplicationController
 
   def new
     @medication = Medication.new
-    @patient = Patients.all
   end
 
   def create
     @medication = Medication.create medication_params
-    redirect_to patient_path(@patient)
+    redirect_to medications_path
   end
 
   def edit
@@ -37,7 +36,8 @@ class MedicationsController < ApplicationController
     params.require(:medication).permit(
       :name,
       :dosage,
-      :frequency
+      :frequency,
+      patient_ids: []
     )
   end
 

@@ -31,7 +31,7 @@ class FacilitiesController < ApplicationController
   # POST /restaurants.json
   def create
     @facility = Facility.new(facility_params)
-    @foods = Food.all
+    @patients = Patient.all
     # flash
     if @facility.save
       flash[:notice] = 'Facility was successfully created.'
@@ -78,7 +78,8 @@ class FacilitiesController < ApplicationController
   
   def facility_params
     params.require(:facility).permit(
-      :name
+      :name, 
+      patient_ids:[]
     )
   end
 

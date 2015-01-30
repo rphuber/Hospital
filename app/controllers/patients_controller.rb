@@ -7,16 +7,23 @@ class PatientsController < ApplicationController
   def new
     @patient = Patient.new
     @facilities = Facility.all
+    @medications = Medication.all
   end
 
   def create
     @patient = Patient.create patient_params
-    redirect_to facility_path(@facility)
+    redirect_to patients_path
+  end
+
+  def show
+    @patient = Patient.find params[:id]
+    @medications = Medication.all
   end
 
   def edit
     @patient = Patient.find params[:id]
     @facilities = Facility.all
+    @medications = Medication.all
   end
 
   def update
@@ -40,7 +47,9 @@ class PatientsController < ApplicationController
       :dob,
       :symptoms,
       :gender,
-      :blood_type
+      :blood_type, 
+      facility_ids: [],
+      medication_ids: []
     )
   end
 

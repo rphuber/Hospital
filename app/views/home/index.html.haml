@@ -12,21 +12,23 @@
     %h4.text-center World Class Facilities.
     %p 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
+      = link_to "Learn More", facilities_path
+
   .large-4.columns
     %a{:href => facilities_path}
       = image_tag "doctor-image.jpg"
     %h4.text-center Doctors
     %p 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
+      = link_to "Learn More", facilities_path
+
   .large-4.columns
-    %a{:href => facilities_path}
+    %a{:href => patients_path}
       = image_tag "patient-image.jpg"
     %h4.text-center Patients
     %p 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
+      = link_to "Learn More", patients_path
 .row
   .large-12.columns
     .panel

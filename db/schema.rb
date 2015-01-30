@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130153412) do
+ActiveRecord::Schema.define(version: 20150130164235) do
 
   create_table "doctors", force: :cascade do |t|
-    t.text    "first_name",       limit: 65535
-    t.text    "last_name",        limit: 65535
-    t.integer "commentable_id",   limit: 4
-    t.string  "commentable_type", limit: 255
+    t.text     "name",             limit: 65535
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "facilities", force: :cascade do |t|
@@ -35,10 +36,10 @@ ActiveRecord::Schema.define(version: 20150130153412) do
 
   create_table "medications", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.decimal  "dosage",                 precision: 10
+    t.integer  "dosage",     limit: 4
     t.string   "frequency",  limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "patient_id", limit: 4
   end
 
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150130153412) do
   create_table "patients", force: :cascade do |t|
     t.string   "first_name",  limit: 255
     t.string   "last_name",   limit: 255
-    t.datetime "dob"
+    t.date     "dob"
     t.string   "symptoms",    limit: 255
     t.string   "gender",      limit: 255
     t.string   "blood_type",  limit: 255
