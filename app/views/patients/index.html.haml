@@ -1,0 +1,15 @@
+%h2 Patient List
+%h3 
+  = link_to "Add New Patient", new_facility_patient_path
+%ul
+  - @patients.each do |patient|
+    %li
+      %p
+        = patient.first_name
+        = patient.last_name
+      = link_to "View Patient Details", patient, :edit
+      = link_to "Edit", edit_patient_path(patient)
+      = link_to "Delete", patient, method: :delete, data: { confirm: 'Are you sure?' }
+      %br
+
+= link_to "Patient", patient_path(patient)

@@ -1,0 +1,52 @@
+=title "#{@patient.first_name} #{@patient.last_name}'s Detail"
+%row
+  .small-9.small-offset-3
+    %h4 Patient Record Detail
+    
+    .panel.radius
+      %p
+        %strong Name:
+        = @patient.first_name 
+        = @patient.last_name 
+    
+      %p
+        %strong Date of Birth:
+        = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
+    
+      %p
+        %strong Symptoms:
+        = @patient.symptoms
+    
+      %p
+        %strong Gender:
+        = @patient.gender
+    
+      %p
+        %strong Blood Type:
+        = @patient.blood_type
+    
+      = link_to "Back to Patient List", facility_path(@facility), class: "button small"
+      = link_to 'Edit Details', edit_patient_path(@patient), class: "button small"
+      %hr/
+    
+      %h3 Patient Medications
+    
+      = link_to "Add Medication", new_patient_medication_path(@patient), class: "button small"
+      = link_to "Edit Medications", patient_medications_path(@patient), class: "button small"
+        
+      %table
+        %thead
+          %tr
+            %th{width: 230} Name
+            %th{width: 230} Dosage
+            %th{width: 230} Frequency
+        %tbody
+          - @medications.each do |medication|
+            %tr
+              %td
+                = medication.name
+              %td
+                = medication.dosage
+              %td
+                = medication.frequency
+              
