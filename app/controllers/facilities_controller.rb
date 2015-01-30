@@ -2,22 +2,36 @@ class FacilitiesController < ApplicationController
 
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
 
+  # GET /restaurants
+  # GET /restaurants.json
   def index
-    @title = 'Facility Listing'
     @facilities = Facility.all
   end
-
+  
+  # GET /restaurants/new
   def new
     @facility = Facility.new
+    @patints = Patient.all
   end
 
+  # GET /restaurants/1
+  # GET /restaurants/1.json
   def show
     @patients = @facility.patients
-    
+    @doctor = Doctor.new
   end
 
+  def create_doctor
+    @facility = Facility.find params[:id]
+    @doctor = @facility.doctors.create doctor_params
+    redirect_to facility_path(@facility)
+  end
+
+  # POST /restaurants
+  # POST /restaurants.json
   def create
     @facility = Facility.new(facility_params)
+    @foods = Food.all
     # flash
     if @facility.save
       flash[:notice] = 'Facility was successfully created.'
@@ -32,7 +46,10 @@ class FacilitiesController < ApplicationController
     
   end
 
+  # PATCH/PUT /restaurants/1
+  # PATCH/PUT /restaurants/1.json
   def update
+    @patients = Patient.all
     respond_to do |format|
       if @facility.update(facility_params)
         format.html { redirect_to @facility, notice: 'Facility was successfully updated.' }
@@ -43,6 +60,8 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  # DELETE /restaurants/1
+  # DELETE /restaurants/1.json
   def destroy
     @facility.destroy
     respond_to do |format|
@@ -62,5 +81,12 @@ class FacilitiesController < ApplicationController
       :name
     )
   end
+
+  def doctor_params
+      params.require(:comment).permit(
+        :first_name,
+        :last_name
+      )
+    end
 
 end

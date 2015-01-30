@@ -1,7 +1,12 @@
 class Patient < ActiveRecord::Base
   
-  has_many    :medications, dependent: :destroy
-  belongs_to  :facility
+  has_many :facility_patients
+  has_many :facilities, through: :facility_patients
+  
+  has_many :patient_medications
+  has_many :medications, through: :patient_medications
+
+  has_many  :doctors, as: :doctorable
 
   validates :first_name, presence:true
   validates :last_name, presence:true
