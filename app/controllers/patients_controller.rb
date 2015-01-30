@@ -5,38 +5,30 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @facility = Facility.find params[:facility_id]
-    @patient = @facility.patients.new  
-  end
-
-  def show
-    @patient = Patient.find params[:id]
-    @facility = Facility.find @patient.facility_id
-    @medications = @patient.medications
+    @patient = Patient.new
+    @facilities = Facility.all
   end
 
   def create
-    @facility = Facility.find params[:facility_id]
-    @patient = @facility.patients.create patient_params
+    @patient = Patient.create patient_params
     redirect_to facility_path(@facility)
   end
 
   def edit
     @patient = Patient.find params[:id]
+    @facilities = Facility.all
   end
 
   def update
     @patient = Patient.find params[:id]
-    @facility = Facility.find @patient.facility_id
     @patient.update_attributes patient_params
-    redirect_to facility_path(@facility)
+    redirect_to patients_path
   end
 
   def destroy
     @patient = Patient.find params[:id]
-    @facility = Facility.find @patient.facility_id
     @patient.delete
-    redirect_to facility_path(@facility)
+    redirect_to patients_path
   end
 
   private

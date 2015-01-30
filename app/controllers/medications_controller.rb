@@ -1,43 +1,34 @@
 class MedicationsController < ApplicationController
 
   def index
-    @patient = Patient.find params[:patient_id]
-    @medications = @patient.medications
-  end
-
-  def show
-    @patient = Patient.find params[:patient_id]
-    @medications = @patient.medications
-  
+    @medications = Medication.all
   end
 
   def new
-    @patient = Patient.find params[:patient_id]
-    @medication = @patient.medications.new  
+    @medication = Medication.new
+    @patient = Patients.all
   end
 
   def create
-    @patient = Patient.find params[:patient_id]
-    @medication = @patient.medications.create medication_params
+    @medication = Medication.create medication_params
     redirect_to patient_path(@patient)
   end
 
   def edit
     @medication = Medication.find params[:id]
+    @patients = Patient.all
   end
 
   def update
     @medication = Medication.find params[:id]
-    @patient = Patient.find @medication.patient_id
     @medication.update_attributes medication_params
-    redirect_to patient_medications_path(@patient)
+    redirect_to medications_path
   end
 
   def destroy
     @medication = Medication.find params[:id]
-    @patient = Patient.find @medication.patient_id
     @medication.delete
-    redirect_to patient_medications_path(@patient)
+    redirect_to medications_path
   end
 
   private
