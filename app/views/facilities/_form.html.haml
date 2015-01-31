@@ -6,4 +6,9 @@
   = f.label :name, "Name"
   = f.text_field :name
   %br/
+  = hidden_field_tag 'facility[patient_ids][]', ''
+  - @patients.each do |patient|
+    = check_box_tag 'facility[patient_ids][]', patient.id, @facility.patients.include?(patient)
+    = patient.first_name
+    = patient.last_name
   = f.submit class: "button tiny"

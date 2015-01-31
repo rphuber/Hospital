@@ -17,7 +17,8 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find params[:id]
-    @medications = Medication.all
+    @medications = @patient.medications
+    @doctor = Doctor.new
   end
 
   def edit
@@ -38,6 +39,12 @@ class PatientsController < ApplicationController
     redirect_to patients_path
   end
 
+  def create_doctor
+    @patient = Patient.find params[:id]
+    @doctor = @patient.doctors.create doctor_params
+    redirect_to patient_path(@patient)
+  end
+
   private
   
   def patient_params
@@ -51,6 +58,12 @@ class PatientsController < ApplicationController
       facility_ids: [],
       medication_ids: []
     )
+  end
+
+  def doctor_params
+      params.require(:doctor).permit(
+        :name
+      )
   end
 
 end

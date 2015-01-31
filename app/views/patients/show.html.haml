@@ -8,7 +8,7 @@
         %strong Name:
         = @patient.first_name 
         = @patient.last_name 
-    
+  
       %p
         %strong Date of Birth:
         = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
@@ -25,15 +25,12 @@
         %strong Blood Type:
         = @patient.blood_type
     
-      = link_to "Back to Patient List", patients_path, class: "button small"
-      = link_to 'Edit Details', edit_patient_path(@patient), class: "button small"
       %hr/
     
-      %h3 Patient Medications
-    
-      = link_to "Add Medication", new_medication_path, class: "button small"
-      = link_to "Edit Medications", medications_path, class: "button small"
-        
+      %h3 Patient Details
+      
+      %h4 Medications
+
       %table
         %thead
           %tr
@@ -49,4 +46,23 @@
                 = medication.dosage
               %td
                 = medication.frequency
-              
+
+      %hr/
+      %h4 Doctor Information
+
+      %p
+        %strong Doctor:
+        - @patient.doctors.each do |doctor|
+          = doctor.name
+
+      = form_for @doctor, url: create_doctor_patient_path(@patient) do |f|
+        = f.label :name, "Doctor's Name"
+        = f.text_field :name
+
+        %br/
+        = f.submit "Submit Doctor", class: "button small radius right"
+      %hr/
+      .row.text-right
+        .small-12.column
+          = link_to "Back to Patient List", patients_path, class: "button small radius"
+          = link_to 'Edit Details', edit_patient_path(@patient), class: "button small radius"

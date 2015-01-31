@@ -11,7 +11,7 @@ class FacilitiesController < ApplicationController
   # GET /restaurants/new
   def new
     @facility = Facility.new
-    @patints = Patient.all
+    @patients = Patient.all
   end
 
   # GET /restaurants/1
@@ -43,7 +43,8 @@ class FacilitiesController < ApplicationController
   end
 
   def edit
-    
+    @facility = Facility.find params[:id]
+    @patients = Patient.all
   end
 
   # PATCH/PUT /restaurants/1
@@ -84,9 +85,8 @@ class FacilitiesController < ApplicationController
   end
 
   def doctor_params
-      params.require(:comment).permit(
-        :first_name,
-        :last_name
+      params.require(:doctor).permit(
+        :name
       )
     end
 
