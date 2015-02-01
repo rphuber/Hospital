@@ -3,38 +3,20 @@
   .large-3.column
     %ul.side-nav
       %li
-        %a{:href => new_facility_path} Add New Facility
+        = link_to "Add New Facility", new_facility_path
       %li
-        %a{:href => ""}
+        = link_to "Add New Patient", new_patient_path
       %li
-        %a{:href => ""}
+        = link_to "Add New Medication", new_medication_path
   .large-9.column
     - @facilities.each do |facility|
-      .large-4.columns
-        %a{:href => facility_path(facility)} #{facility.name}
-        %a.button.small{:href => edit_facility_path(facility)} Edit
-        / %a{:href => "Delete Facility", facility, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert"}
+      .large-6.columns.end
+        .small-12.columns
+          %img{:src => "http://placehold.it/400x300&text=#{facility.name}", :alt => ""}/
+        .small-12.columns
+          = link_to "View", facility_path(facility), class: "button small secondary radius expand"
+        .small-6.columns
+          = link_to "Edit", edit_facility_path(facility), class: "button small radius expand"
+        .small-6.columns
+          = link_to "Delete", facility, method: :delete, data: { confirm: 'Are you sure?'}, class: "button small radius expand alert"
         %br/
-
-.row
-  .large-4.columns
-    %a{:href => facilities_path}
-      = image_tag "hospital-image.jpg"
-    %h4.text-center World Class Facilities.
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
-  .large-4.columns
-    %a{:href => facilities_path}
-      = image_tag "doctor-image.jpg"
-    %h4.text-center Doctors
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
-  .large-4.columns
-    %a{:href => facilities_path}
-      = image_tag "patient-image.jpg"
-    %h4.text-center Patients
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      %a{:href => facilities_path} Learn more
