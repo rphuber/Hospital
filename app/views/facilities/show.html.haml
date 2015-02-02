@@ -22,7 +22,7 @@
         - @patients.each do |patient| 
           %li.list-group-item
             = link_to "#{patient.first_name} #{patient.last_name}", patient_path(patient) 
-            = link_to "Edit", edit_patient_path(patient), class: "button tiny right"
-    = link_to 'Add Patient', new_patient_path(@facility), class: "button small"
+            = link_to "Edit", edit_patient_path(patient), class: "button tiny radius right"
+    = link_to 'Add Patient', new_patient_path(@facility), class: "button small radius"
 
     %hr
