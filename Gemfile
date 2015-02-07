@@ -8,13 +8,15 @@ gem 'mysql2'
 # Use HAML for content pages
 gem 'haml'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# Use Zurb Foundation Framework
-gem 'foundation-rails', '~> 5.5'
+# Use Bourbon, Neat and Bitters Framework
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

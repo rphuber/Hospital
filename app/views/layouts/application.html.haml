@@ -8,31 +8,77 @@
     %title= content_for?(:title) ? yield(:title) : "Untitled"
 
     = stylesheet_link_tag "application"
-    = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tag
 
   %body
-    .row
-      .large-3.columns
-        %h1
-          %a{:href => "/"}
-            %img{:src => "http://placehold.it/400x100&text=Hospital"}/
-      .large-9.columns
-        %ul.right.button-group
-          %li
-            %a.button{:href => facilities_path} Facilities
-          %li
-            %a.button{:href => patients_path} Patients
-          %li
-            %a.button{:href => medications_path} Medications
+    %header.centered-navigation{:role => "banner"}
+      .centered-navigation-wrapper
+        %a.mobile-logo{:href => "javascript:void(0)"}
+          %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png"}
+        %a#js-centered-navigation-mobile-menu.centered-navigation-mobile-menu{:href => "javascript:void(0)"} MENU
+        %nav{:role => "navigation"}
+          %ul#js-centered-navigation-menu.centered-navigation-menu.show
+            %li.nav-link.more
+              %a{:href => facilities_path} Facilities
+              %ul.submenu
+                %li
+                  %a{:href => "javascript:void(0)"} Add New Facility
+                %li
+                  %a{:href => "javascript:void(0)"} Another Item
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} Patients
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} Medications
+            %li.nav-link.logo
+              %a.logo{:href => root_path}
+                %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png"}
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} Testimonials
+            %li.nav-link.more
+              %a{:href => "javascript:void(0)"} More
+              %ul.submenu
+                %li
+                  %a{:href => "javascript:void(0)"} Submenu Item
+                %li
+                  %a{:href => "javascript:void(0)"} Another Item
+                %li.more
+                  %a{:href => "javascript:void(0)"} Item with submenu
+                  %ul.submenu
+                    %li
+                      %a{:href => "javascript:void(0)"} Sub-submenu Item
+                    %li
+                      %a{:href => "javascript:void(0)"} Another Item
+                %li.more
+                  %a{:href => "javascript:void(0)"} Another submenu
+                  %ul.submenu
+                    %li
+                      %a{:href => "javascript:void(0)"} Sub-submenu
+                    %li
+                      %a{:href => "javascript:void(0)"} An Item
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} Sign up
     .row
       = yield
-    %footer.row
-      .large-12.columns
-        %hr/
-        .row
-          .large-6.large-offset-6.columns.text-right
-            %p © 2015 Copyright RHDesigns.
-          
 
+    %footer.footer{:role => "contentinfo"}
+      .footer-logo
+        %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+      .footer-links
+        %ul
+          %li
+            %h3 Content
+          %li
+            %a{:href => "javascript:void(0)"} About
+          %li
+            %a{:href => "javascript:void(0)"} Contact
+
+        %ul
+          %li
+            %h3 Legal
+          %li
+            %a{:href => "javascript:void(0)"} Terms and Conditions
+          %li
+            %a{:href => "javascript:void(0)"} Privacy Policy
+      %hr
+        %p Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.

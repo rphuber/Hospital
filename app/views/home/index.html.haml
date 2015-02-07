@@ -1,42 +1,30 @@
 - title "Home"
-.row
-  .large-12.columns
-    #slider
-      = image_tag "PhysicianPicture.jpg"
-    %hr/
-    
-.row
-  .large-4.columns
+ 
+.hero.outer-container
+  .hero-inner
+    %a.hero-logo{:href => ""}
+      %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png\r\n"}/
+    .hero-copy
+      %h1 HealthCare
+      %p Track patients and medications for health care facilities
+
+.cards
+  .card
     %a{:href => facilities_path}
-      = image_tag "hospital-image.jpg"
-    %h4.text-center World Class Facilities.
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      = link_to "Learn More", facilities_path
-
-  .large-4.columns
+      .card-header
+        Facilities
+      .card-copy
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.
+  .card
     %a{:href => patients_path}
-      = image_tag "patient-image.jpg"
-    %h4.text-center Patients
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      = link_to "Learn More", patients_path
-  
-  .large-4.columns
+      .card-header
+        Patients
+      .card-copy
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.
+  .card
     %a{:href => medications_path}
-      = image_tag "doctor-image.jpg"
-    %h4.text-center Medications
-    %p 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam dolores, doloremque accusantium tempore facilis dolorum, enim ratione expedita optio saepe cum beatae nesciunt unde placeat fugiat nam distinctio repellat sunt.
-      = link_to "Learn More", medications_path
-
-.row
-  .large-12.columns
-    .panel
-      %h4 Get in touch!
-      .row
-        .large-9.columns
-          %p We'd love to hear from you, you attractive person you.
-        .large-3.columns
-          %a.radius.button.right{:href => "#"} Contact Us
-      
+      .card-header
+        Medications
+      .card-copy
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
