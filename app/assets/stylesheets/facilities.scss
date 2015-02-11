@@ -5,10 +5,15 @@
 @import 'mixins/grid-item-columns';
 @import 'mixins/flex-boxes';
 @import 'mixins/search-bar';
+@import 'mixins/side-image';
 
 // Top level button and nav
 .button {
   @include button;
+}
+
+button a {
+  color: white;
 }
 
 
@@ -60,4 +65,21 @@
   }
 }
 
+// Facility Show tweaks
+
+.side-image .side-image-content h4 {
+  font-size: 2.5rem;
+}
+
+.side-image .side-image-content {
+  padding: 4em;
+}
+
+.list-header {
+  text-align:center;
+  padding: 1em;
+  h2 {
+    font-size: 1.2rem;
+  }
+}
 

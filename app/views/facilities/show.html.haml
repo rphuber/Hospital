@@ -1,28 +1,31 @@
-.row
-  .large-3.column
-    %ul.side-nav
-      %li
-        = link_to "Back to Facility List", facilities_path
-      %li
-        = link_to "Add New Facility", new_facility_path
-      %li
-        = link_to "Add New Patient", new_patient_path
-      %li
-        = link_to "Add New Medication", new_medication_path
-  .large-9.column
-    %h4
-      = @facility.name
+.side-image
+  .side-image-content
+    %h4 
+      = @facility.name 
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    %button
+      = link_to "Add New Patient", new_patient_path
+    %button 
+      = link_to "Back to Facility List", facilities_path
+.list-header
+  %h2
+    Patient List
 
-    %br
-    .small-12.column.panel
-      %h4
-        Patient List
-
-      %ul.list-group
-        - @patients.each do |patient| 
-          %li.list-group-item
-            = link_to "#{patient.first_name} #{patient.last_name}", patient_path(patient) 
-            = link_to "Edit", edit_patient_path(patient), class: "button tiny radius right"
-    = link_to 'Add Patient', new_patient_path(@facility), class: "button small radius"
-
-    %hr
+.grid-items-lines
+  - @patients.each do |patient|
+    .grid-item{:href => "javascript:void(0)"}
+      %a{:href => patient_path(patient)} 
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1_dark.png"}/
+        %h1 
+          = patient.first_name 
+          = patient.last_name
+        %p 
+          Symptoms:
+          = patient.symptoms
+      .links
+        = link_to "View", patient_path(patient), :class => "link-button"
+        = link_to "Edit", edit_patient_path(patient), :class => "link-button"
+        = link_to "Delete", patient, method: :delete, data: { confirm: 'Are you sure?'}, :class => "link-button"
+  .right-cover
+  .bottom-cover
