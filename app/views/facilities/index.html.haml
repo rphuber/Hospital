@@ -1,22 +1,23 @@
 = title "Facilities"
-.row
-  .large-3.column
-    %ul.side-nav
-      %li
-        = link_to "Add New Facility", new_facility_path
-      %li
-        = link_to "Add New Patient", new_patient_path
-      %li
-        = link_to "Add New Medication", new_medication_path
-  .large-9.column
-    - @facilities.each do |facility|
-      .large-6.columns.end
-        .small-12.columns
-          %img{:src => "http://placehold.it/400x300&text=#{facility.name}", :alt => ""}/
-        .small-12.columns
-          = link_to "View", facility_path(facility), class: "button small secondary radius expand"
-        .small-6.columns
-          = link_to "Edit", edit_facility_path(facility), class: "button small radius expand"
-        .small-6.columns
-          = link_to "Delete", facility, method: :delete, data: { confirm: 'Are you sure?'}, class: "button small radius expand alert"
-        %br/
+
+.search-heading
+  %a.button{:href => new_facility_path}
+    Add Facility
+  %form.search-bar{:role => "search"}
+    %input{:placeholder => "Enter Search", :type => "search"}/
+    %button{:type => "submit"}
+      %img{:alt => "Search Icon", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png"}/
+
+.flex-boxes
+  - @facilities.each do |facility|
+    .flex-box
+      %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png", :alt => ""}/
+      %h1.flex-title #{facility.name}
+      %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+      .links
+        = link_to "View", facility_path(facility), :class => "link-button"
+        = link_to "Edit", edit_facility_path(facility), :class => "link-button"
+        = link_to "Delete", facility, method: :delete, data: { confirm: 'Are you sure?'}, :class => "link-button"
+  %a.flex-box{:href => new_facility_path}
+    %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png", :alt => ""}/
+    %h1.flex-title Add Facility

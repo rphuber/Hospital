@@ -1,3 +1,63 @@
 // Place all the styles related to the facilities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixins/grid-item-columns';
+@import 'mixins/flex-boxes';
+@import 'mixins/search-bar';
+
+// Top level button and nav
+.button {
+  @include button;
+}
+
+
+// Flex-box tweaks
+
+.flex-boxes .flex-box {
+  padding:2em;
+
+  h1 {
+    margin-top: 1.5em;
+  }
+  
+  .links {
+    margin-top: 1.25em;
+  }
+}
+
+.flex-box {
+  h1 {
+    margin-top: 1.5em;
+  }
+  p {
+  }
+  .links {
+    margin-top: 1.25em;
+  }
+}
+
+.links {
+  text-align: right;
+}
+
+.link-button {
+  margin-right: 5px;
+}
+
+.search-heading {
+  text-align: center;
+  .button {
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 4px 18px;
+  }
+  .search-bar {
+    
+    width: 60%;
+    display: inline-block;
+  }
+}
+
+
