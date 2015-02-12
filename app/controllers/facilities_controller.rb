@@ -79,7 +79,8 @@ class FacilitiesController < ApplicationController
   
   def facility_params
     params.require(:facility).permit(
-      :name, 
+      :name,
+      :description,  
       patient_ids:[]
     )
   end

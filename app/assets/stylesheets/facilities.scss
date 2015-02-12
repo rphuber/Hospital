@@ -26,16 +26,19 @@ button a {
     margin-top: 1.5em;
   }
   
+  p {
+    margin-bottom: 0.75em;
+  }
+
   .links {
     margin-top: 1.25em;
   }
 }
 
 .flex-box {
+  position: relative;
   h1 {
     margin-top: 1.5em;
-  }
-  p {
   }
   .links {
     margin-top: 1.25em;
@@ -43,7 +46,7 @@ button a {
 }
 
 .links {
-  text-align: right;
+  margin: 0 auto;
 }
 
 .link-button {
@@ -81,5 +84,9 @@ button a {
   h2 {
     font-size: 1.2rem;
   }
+}
+
+.grid-item {
+  position:relative;
 }
 

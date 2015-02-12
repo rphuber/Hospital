@@ -3,7 +3,9 @@
     %h4 
       = @facility.name 
     %p
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      = @facility.description
+    %button  
+      = link_to "Edit Facility", edit_facility_path(@facility)
     %button
       = link_to "Add New Patient", new_patient_path
     %button 

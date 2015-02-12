@@ -13,8 +13,8 @@
     .flex-box
       %a{:href => facility_path(facility)}
         %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png", :alt => ""}/
-        %h1.flex-title #{facility.name}
-        %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+        %h1.flex-title 
+          #{facility.name}
       .links
         = link_to "View", facility_path(facility), :class => "link-button"
         = link_to "Edit", edit_facility_path(facility), :class => "link-button"
