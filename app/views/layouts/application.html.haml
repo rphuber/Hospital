@@ -15,7 +15,7 @@
     %header.navigation{:role => "banner"}
       .navigation-wrapper
         %a.logo{:href => root_path}
-          %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}/
+          = image_tag "icons/heart-icon.png"
         %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
         %nav{:role => "navigation"}
           %ul#js-navigation-menu.navigation-menu.show
@@ -26,3 +26,30 @@
             %li.nav-link
               %a{:href => medications_path} Medications
     = yield
+        
+    %footer.footer-2{:role => "contentinfo"}
+      .footer-logo
+        %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}/
+      %ul
+        %li
+          %a{:href => "javascript:void(0)"} About
+        %li
+          %a{:href => "javascript:void(0)"} Contact
+        %li
+          %a{:href => "javascript:void(0)"} Products
+      .footer-secondary-links
+        %ul
+          %li
+            %a{:href => "javascript:void(0)"} Terms and Conditions
+          %li
+            %a{:href => "javascript:void(0)"} Privacy Policy
+        %ul.footer-social
+          %li
+            %a{:href => "javascript:void(0)"}
+              %img{:alt => "Facebook", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png"}/
+          %li
+            %a{:href => "javascript:void(0)"}
+              %img{:alt => "Twitter", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png"}/
+          %li
+            %a{:href => "javascript:void(0)"}
+              %img{:alt => "YouTube", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png"}/

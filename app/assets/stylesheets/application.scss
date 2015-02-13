@@ -21,3 +21,7 @@
   @import 'home';
   @import 'facilities';
 
+header.navigation .logo img {
+  max-height: 100%;
+  padding: .25em;
+}

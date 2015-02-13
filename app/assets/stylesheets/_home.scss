@@ -1,25 +1,19 @@
 @import 'mixins/navigation';
 @import 'mixins/hero';
+@import 'mixins/footer';
 @import 'mixins/cards';
+@import 'mixins/parallax';
+@import 'mixins/icon-bullet-points';
 
 
 
-.texture {
-  $texture-top-background: lighten(#ddf0ef, 1%);
-  $texture-bottom-background: darken(#ddf0ef, 10%);
-
-
-  .texture-normal {
-    // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  
-    @include texture(180deg, $texture-top-background, $texture-bottom-background, 67, 1); 
-
-  }
-
-  .texture-inverted {
-    // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  
-    @include texture(180deg, $texture-top-background, $texture-bottom-background, 67, 0); 
-
+.parallax-static-content {
+  color: $white;
+  img {
+    max-height: 25%;
   }
 }
 
-
+#js-parallax-window.parallax-window {
+  margin-bottom: 50px;
+}

@@ -12,7 +12,7 @@
   - @facilities.each do |facility|
     .flex-box
       %a{:href => facility_path(facility)}
-        %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png", :alt => ""}/
+        = image_tag "icons/hospital-icon.png"
         %h1.flex-title 
           #{facility.name}
       .links
@@ -20,5 +20,5 @@
         = link_to "Edit", edit_facility_path(facility), :class => "link-button"
         = link_to "Delete", facility, method: :delete, data: { confirm: 'Are you sure?'}, :class => "link-button"
   %a.flex-box{:href => new_facility_path}
-    %img{:src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png", :alt => ""}/
+    = image_tag "icons/add-icon.png"
     %h1.flex-title Add Facility
