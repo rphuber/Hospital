@@ -16,11 +16,10 @@
       .navigation-wrapper
         %a.logo{:href => root_path}
           = image_tag "icons/heart-icon.png"
-        %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
         %nav{:role => "navigation"}
-          %ul#js-navigation-menu.navigation-menu.show
+          %ul
             %li.nav-link
-              %a{:href => facilities_path} Facilities
+              = link_to "Facilities", facilities_path
             %li.nav-link
               %a{:href => patients_path} Patients
             %li.nav-link
@@ -29,7 +28,7 @@
         
     %footer.footer-2{:role => "contentinfo"}
       .footer-logo
-        %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}/
+        = image_tag "icons/heart-icon.png"
       %ul
         %li
           %a{:href => "javascript:void(0)"} About

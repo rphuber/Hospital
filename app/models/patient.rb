@@ -25,4 +25,42 @@ class Patient < ActiveRecord::Base
     ["AB+", "AB+"],
     ["AB-", "AB-"]
   ]
+
+  include Workflow
+  workflow do
+    state :waiting_room do
+      event :check_in, transitions_to: :checked_in
+    end
+
+    state :checked_in do
+      event :see_doctor, transitions_to: :with_doctor
+      event :get_xray, transitions_to: :in_xray
+      event :enter_surgery, transitions_to: :in_surgery
+    end
+
+    state :with_doctor do
+      event :get_xray, transitions_to: :in_xray
+      event :enter_surgery, transitions_to: :in_surgery
+      event :check_out, transitions_to: :checked_out
+    end
+
+    state :in_xray do
+      event :see_doctor, transitions_to: :with_doctor
+      event :enter_surgery, transitions_to: :in_surgery
+      event :check_out, transitions_to: :checked_out
+    end
+
+    state :in_surgery do
+      event :get_xray, transitions_to: :in_xray
+      event :see_doctor, transitions_to: :with_doctor
+      event :check_out, transitions_to: :checked_out
+    end
+
+    state :checked_out do
+      event :pay_bill, transitions_to: :paid_out
+    end
+
+    state :paid_out
+
+  end
 end

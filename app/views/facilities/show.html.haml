@@ -18,7 +18,7 @@
   - @patients.each do |patient|
     .grid-item{:href => "javascript:void(0)"}
       %a{:href => patient_path(patient)} 
-        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1_dark.png"}/
+        = display_patient_icon(patient)
         %h1 
           = patient.first_name 
           = patient.last_name

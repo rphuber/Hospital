@@ -45,6 +45,37 @@ class PatientsController < ApplicationController
     redirect_to patient_path(@patient)
   end
 
+  def check_in
+    @patient.in!
+    redirect_to patients_path
+  end
+
+  def see_doctor
+    @patient.doctor!
+    redirect_to patients_path
+  end
+
+  def get_xray
+    @patient.xray!
+    redirect_to patients_path
+  end
+
+  def enter_surgery
+    @patient.surgery!
+    redirect_to patients_path
+  end
+
+  def check_out
+    @patient.out!
+    redirect_to patients_path
+  end
+
+  def pay_bill
+    @patient.paid!
+    redirect_to patients_path
+    
+  end
+
   private
   
   def patient_params

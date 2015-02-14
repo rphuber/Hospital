@@ -3,15 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  menuToggle = $("#js-mobile-menu").unbind()
-  $("#js-navigation-menu").removeClass "show"
-  menuToggle.on "click", (e) ->
-    e.preventDefault()
-    $("#js-navigation-menu").slideToggle ->
-      $("#js-navigation-menu").removeAttr "style"  if $("#js-navigation-menu").is(":hidden")
-      return
 
-    return
   parallax()  if $("#js-parallax-window").length
   return
 
@@ -35,7 +27,6 @@ parallax = ->
     plxSpeed = 0.35
     plxBackground.css "top", -(plxWindowTopToWindowTop * plxSpeed) + "px"
   return
-
 
 
 

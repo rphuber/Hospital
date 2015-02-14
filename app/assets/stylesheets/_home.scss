@@ -1,4 +1,5 @@
 @import 'mixins/navigation';
+@import 'mixins/centered-navigation';
 @import 'mixins/hero';
 @import 'mixins/footer';
 @import 'mixins/cards';
@@ -6,7 +7,13 @@
 @import 'mixins/icon-bullet-points';
 
 
+// navigation
+header.navigation ul li.nav-link {
+  display: inline-block;
+  width: initial;
+}
 
+// parallax
 .parallax-static-content {
   color: $white;
   img {
