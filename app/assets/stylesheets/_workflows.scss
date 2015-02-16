@@ -1,0 +1,44 @@
+.grid-items-lines .grid-item {
+  &.waiting_room{
+    background: rgba(#597E99, .5);
+    &:hover {
+      background: rgba(#193E59, .5);
+    }
+  }
+  &.checked_in {
+    background: rgba(#50AFBA, .5);
+    &:hover {
+      background: rgba(#106F7A, .5);
+    }
+  }
+  &.with_doctor {
+    background: rgba(#80B3B5, .5);
+    &:hover {
+      background: rgba(#C0F3F5, .5);
+    }
+  }   
+  &.in_xray {
+    background: rgba(#F8FFEE, .5);
+    &:hover {
+      background: rgba(#B6BFA9, .5);
+    }
+  } 
+  &.in_surgery {
+    background: rgba(#B05F00, .5);
+    &:hover {
+      background: rgba(#F09F40, .5);
+    }
+  } 
+  &.checked_out {
+    background: rgba(#0d963d, .5);
+    &:hover {
+      background: rgba(#5AE38A, .5);
+    }
+  } 
+  &.paid_out {
+    background: rgba(#50afba, .5);
+    &:hover {
+      background: rgba(#106f7a, .5);
+    }
+  } 
+}

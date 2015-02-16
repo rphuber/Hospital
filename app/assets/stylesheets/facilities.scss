@@ -7,7 +7,21 @@
 @import 'mixins/search-bar';
 @import 'mixins/side-image';
 
+
 // Top level button and nav
+.button-container {
+  @include outer-container;
+}
+
+.nav-button {
+  button {
+    width: 100%;
+  }
+  @include media($large-screen) {
+      @include span-columns(4);
+  }
+}
+
 .button {
   @include button;
 }

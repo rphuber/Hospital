@@ -1,22 +1,27 @@
+= title "#{@facility.name}"
 .side-image
   .side-image-content
     %h4 
       = @facility.name 
     %p
       = @facility.description
-    %button  
-      = link_to "Edit Facility", edit_facility_path(@facility)
-    %button
-      = link_to "Add New Patient", new_patient_path
-    %button 
-      = link_to "Back to Facility List", facilities_path
+    .button-container  
+      .nav-button
+        %button  
+          = link_to "Edit Facility", edit_facility_path(@facility)
+      .nav-button
+        %button
+          = link_to "Add New Patient", new_patient_path
+      .nav-button  
+        %button 
+          = link_to "Back to Facility List", facilities_path
 .list-header
   %h2
     Patient List
 
 .grid-items-lines
   - @patients.each do |patient|
-    .grid-item{:href => "javascript:void(0)"}
+    .grid-item{:class => "#{patient.workflow_state}"}
       %a{:href => patient_path(patient)} 
         = display_patient_icon(patient)
         %h1 
