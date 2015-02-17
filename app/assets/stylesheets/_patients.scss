@@ -33,6 +33,29 @@ fieldset {
 
 }
 
+.patient-details-container {
+  @include outer-container;
+}
+
+.patient-details {
+  @include media($large-screen){
+    @include span-columns(6);
+  }
+}
+
+.workflow-links {
+  img {
+    height: 3.5em;
+    max-width: 25%;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+  @include media($large-screen){
+    @include span-columns(6);
+  }
+}
+
 .radio {
   label {
     display: inline-block;

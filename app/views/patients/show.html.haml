@@ -1,34 +1,54 @@
 =title "#{@patient.first_name} #{@patient.last_name}'s Detail"
 %article.type-system-rounded
   %p.type= @patient.workflow_state
-  .patient-details
+  .patient-details-container
     %h1 
       Patient Record Detail
-    %p.date
-      %strong Last Updated: 
-      = Date.parse(@patient.updated_at.to_s).strftime("%m/%d/%Y")
-    %hr/
-    %p
-      %strong Date of Birth:
-      = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
-    %p
-      %strong Gender:
-      = @patient.gender
-
+    .patient-details
+      %p.date
+        %strong Last Updated: 
+        = Date.parse(@patient.updated_at.to_s).strftime("%m/%d/%Y")
+      %hr/
       %p
-        %strong Symptoms:
-        = @patient.symptoms
-
+        %strong Date of Birth:
+        = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
       %p
-        %strong Blood Type:
-        = @patient.blood_type
-  .workflow-links
-    - if @patient.checked_out?
-      = link_to "Pay Bill", pay_bill_patient_path(@patient), method: :patch
-    %hr/
+        %strong Gender:
+        = @patient.gender
 
-    %h4 
-      Medications
+        %p
+          %strong Symptoms:
+          = @patient.symptoms
+
+        %p
+          %strong Blood Type:
+          = @patient.blood_type
+    .workflow-links
+      - case @patient.workflow_state
+        - when 'waiting_room'
+          = link_to image_tag('icons/check-in.png'), check_in_patient_path(@patient), method: :patch
+        - when 'checked_in'
+          = link_to image_tag('icons/doctor.png'), see_doctor_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/xray.png'), get_xray_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(@patient), method: :patch
+        - when 'with_doctor'
+          = link_to image_tag('icons/xray.png'), get_xray_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/check-out.png'), check_out_patient_path(@patient), method: :patch
+        - when 'in_xray'
+          = link_to image_tag('icons/doctor.png'), see_doctor_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/check-out.png'), check_out_patient_path(@patient), method: :patch
+        - when 'in_surgery'
+          = link_to image_tag('icons/xray.png'), get_xray_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/doctor.png'), see_doctor_patient_path(@patient), method: :patch
+          = link_to image_tag('icons/check-out.png'), check_out_patient_path(@patient), method: :patch
+        - else
+          = link_to image_tag('icons/bill-pay.png'), pay_bill_patient_path(@patient), method: :patch
+  %hr/
+
+  %h4 
+    Medications
 
     %table
       %thead
@@ -49,8 +69,10 @@
       %strong
         = succeed ':' do
           = "Doctor".pluralize(@patient.doctors.length)
+      %br/
       - @patient.doctors.each do |doctor|
         = doctor.name
+        %br/
 
       = form_for @doctor, url: create_doctor_patient_path(@patient) do |f|
         = f.label :name, "Add Doctor:"

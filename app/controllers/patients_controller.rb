@@ -48,37 +48,37 @@ class PatientsController < ApplicationController
   def check_in
     set_patient
     @patient.check_in!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
   end
 
   def see_doctor
     set_patient
     @patient.see_doctor!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
   end
 
   def get_xray
     set_patient
     @patient.get_xray!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
   end
 
   def enter_surgery
     set_patient
     @patient.enter_surgery!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
   end
 
   def check_out
     set_patient
     @patient.check_out!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
   end
 
   def pay_bill
     set_patient
     @patient.pay!
-    redirect_to patients_path
+    redirect_to patient_path(@patient)
     
   end
 
