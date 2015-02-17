@@ -46,34 +46,44 @@ class PatientsController < ApplicationController
   end
 
   def check_in
-    @patient.in!
+    set_patient
+    @patient.check_in!
     redirect_to patients_path
   end
 
   def see_doctor
-    @patient.doctor!
+    set_patient
+    @patient.see_doctor!
     redirect_to patients_path
   end
 
   def get_xray
-    @patient.xray!
+    set_patient
+    @patient.get_xray!
     redirect_to patients_path
   end
 
   def enter_surgery
-    @patient.surgery!
+    set_patient
+    @patient.enter_surgery!
     redirect_to patients_path
   end
 
   def check_out
-    @patient.out!
+    set_patient
+    @patient.check_out!
     redirect_to patients_path
   end
 
   def pay_bill
-    @patient.paid!
+    set_patient
+    @patient.pay!
     redirect_to patients_path
     
+  end
+
+  def set_patient
+    @patient = Patient.find params[:id]
   end
 
   private

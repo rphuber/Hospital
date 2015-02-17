@@ -1,16 +1,22 @@
-@import 'mixins/navigation';
-@import 'mixins/centered-navigation';
-@import 'mixins/hero';
-@import 'mixins/footer';
-@import 'mixins/cards';
-@import 'mixins/parallax';
-@import 'mixins/icon-bullet-points';
+@import 'modules/navigation';
+@import 'modules/centered-navigation';
+@import 'modules/hero';
+@import 'modules/footer';
+@import 'modules/cards';
+@import 'modules/parallax';
+@import 'modules/icon-bullet-points';
+@import 'modules/article';
 
 
 // navigation
 header.navigation ul li.nav-link {
   display: inline-block;
   width: initial;
+}
+
+header.navigation .logo img {
+  max-height: 100%;
+  padding: .25em;
 }
 
 // parallax

@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'mixins/grid-item-columns';
-@import 'mixins/flex-boxes';
-@import 'mixins/search-bar';
-@import 'mixins/side-image';
+@import 'modules/grid-item-columns';
+@import 'modules/flex-boxes';
+@import 'modules/search-bar';
+@import 'modules/side-image';
 
 
 // Top level button and nav
@@ -14,21 +14,21 @@
 }
 
 .nav-button {
-  button {
+  a.button {
+    text-align: center;
+    display: block;
     width: 100%;
+    margin-bottom: 25px;
   }
   @include media($large-screen) {
       @include span-columns(4);
   }
 }
 
-.button {
-  @include button;
-}
-
-button a {
+a.button:active, a.button:focus, a.button:hover {
   color: white;
 }
+
 
 
 // Flex-box tweaks

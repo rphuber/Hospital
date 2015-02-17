@@ -21,6 +21,13 @@ Rails.application.routes.draw do
 
     member do
       post :create_doctor
+
+      patch :check_in
+      patch :see_doctor
+      patch :get_xray
+      patch :enter_surgery
+      patch :check_out
+      patch :pay_bill
     end
 
   end

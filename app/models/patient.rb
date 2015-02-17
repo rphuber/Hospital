@@ -57,7 +57,7 @@ class Patient < ActiveRecord::Base
     end
 
     state :checked_out do
-      event :pay_bill, transitions_to: :paid_out
+      event :pay, transitions_to: :paid_out
     end
 
     state :paid_out

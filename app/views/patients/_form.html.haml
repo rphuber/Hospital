@@ -3,46 +3,44 @@
     - @patient.errors.full_messages.each do |message| 
       = message 
       %br
-  .row
-    .small-10.small-offset-1.column
-      = f.label :first_name, "First Name"
-      = f.text_field :first_name
-  .row
-    .small-10.small-offset-1.column
-      = f.label :last_name, "Last Name"
-      = f.text_field :last_name
-  .row
-    .small-10.small-offset-1.column
-      = f.label :dob, "Date of Birth"
-      = f.date_select :dob, {start_year: 1920, order:[:month, :day, :year]}, {class: "small-4 column"}
-  .row  
-    .small-4.small-offset-1.column
-      = f.label :gender, "Gender"
-      = f.radio_button :gender, "Male", :checked => true
-      = label :gender_male, "Male"
-      = f.radio_button :gender, "Female"
-      = label :gender_female, "Female"
-    .small-5.small-offset-1.end.column
-      = f.label :blood_type, "Blood Type"
-      = f.select :blood_type, options_for_select(Patient::BT_OPTIONS, f.object.blood_type), include_blank: "--- Select ---"
-  .row
-    .small-10.small-offset-1.column
-      = f.label :symptoms, "Symptoms"
-      = f.text_area :symptoms
   
-  .row
-    .small-10.small-offset-1.column
-      = hidden_field_tag 'patient[facility_ids][]', ''
-      - @facilities.each do |facility|
-        = check_box_tag 'patient[facility_ids][]', facility.id, @patient.facilities.include?(facility)
-        = facility.name
+  = f.label :first_name, "First Name"
+  = f.text_field :first_name
+  
+  = f.label :last_name, "Last Name"
+  = f.text_field :last_name
+  
+  = f.label :dob, "Date of Birth"
+  = f.date_select :dob, {start_year: 1920, order:[:month, :day, :year]}, {class: "small-4 column"}
 
-  .row
-    .small-10.small-offset-1.column
+  = f.label :gender, "Gender"
+  .radio
+    = f.radio_button :gender, "Male", :checked => true
+    = label :gender_male, "Male"
+    = f.radio_button :gender, "Female"
+    = label :gender_female, "Female"
+
+  = f.label :blood_type, "Blood Type"
+  = f.select :blood_type, options_for_select(Patient::BT_OPTIONS, f.object.blood_type), include_blank: "--- Select ---"
+  
+  = f.label :symptoms, "Symptoms"
+  = f.text_area :symptoms
+  
+  .lists
+    .medication-list
+      %p Patient Medications
       = hidden_field_tag 'patient[medication_ids][]', ''
       - @medications.each do |medication|
-        = check_box_tag 'patient[medication_ids][]', medication.id, @patient.medications.include?(medication)
-        = medication.name
-  .row
-    .small-2.small-offset-1.end.column
-      = f.submit class: "button small right radius"
+        .medication
+          = check_box_tag 'patient[medication_ids][]', medication.id, @patient.medications.include?(medication)
+          = medication.name
+
+    .facility-list
+      %p Facilities Visited:
+      = hidden_field_tag 'patient[facility_ids][]', ''
+      - @facilities.each do |facility|
+        .facility
+          = check_box_tag 'patient[facility_ids][]', facility.id, @patient.facilities.include?(facility)
+          = facility.name
+
+  = f.submit class: "button"

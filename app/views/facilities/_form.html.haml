@@ -1,3 +1,4 @@
+=title "#{@facility.name}"
 = form_for(@facility) do |f|
   - if @facility.errors.any?
     - @facility.errors.full_messages.each do |message|
@@ -7,7 +8,6 @@
   = f.text_field :name
   = f.label :description, "Description"
   = f.text_field :description
-  %br/
   %h2 
     Choose Patients
   = hidden_field_tag 'facility[patient_ids][]', ''

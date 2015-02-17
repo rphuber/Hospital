@@ -16,12 +16,8 @@
   @import 'base/grid-settings';
   @import 'neat';
   @import 'base/base';
-  @import 'mixins/texture';
+  @import 'modules/texture';
+  @import 'modules/button';
   @import 'variables';
-  @import 'home';
-  @import 'facilities';
+  @import 'pages';
 
-header.navigation .logo img {
-  max-height: 100%;
-  padding: .25em;
-}

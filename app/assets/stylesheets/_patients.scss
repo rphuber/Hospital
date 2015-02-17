@@ -1,0 +1,64 @@
+// Place all the styles related to the patients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+article {
+  @include outer-container;
+  padding: 25px 20px;
+  @include media($large-screen) {
+    @include span-columns(10);
+    @include shift(1);
+  }
+}
+
+article.type-system-rounded a.button {
+  color:white;
+}
+
+fieldset {
+  @include outer-container;
+  margin-top: 25px;
+  padding: 25px 20px;
+  border-radius: 8px;
+  @include media($large-screen) {
+    @include span-columns(10);
+    @include shift(1);
+  }
+  select {
+    display: inline-block;
+  }
+  .button {
+    display: block;
+  }
+
+}
+
+.radio {
+  label {
+    display: inline-block;
+  }
+}
+
+.lists {
+  @include outer-container;
+}
+
+.facility-list {
+  margin-bottom:20px;
+  @include media($large-screen) {
+    @include span-columns(3);
+  }
+  .facility {
+    display: block;
+  }
+}
+
+.medication-list {
+  margin-bottom:20px;
+  @include media($large-screen) {
+    @include span-columns(3);
+  }
+  .medication {
+    display: block;
+  }
+}

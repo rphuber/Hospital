@@ -1,68 +1,60 @@
 =title "#{@patient.first_name} #{@patient.last_name}'s Detail"
-%row
-  .small-9.small-offset-3
-    %h4 Patient Record Detail
-    
-    .panel.radius
-      %p
-        %strong Name:
-        = @patient.first_name 
-        = @patient.last_name 
-  
-      %p
-        %strong Date of Birth:
-        = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
-    
+%article.type-system-rounded
+  %p.type= @patient.workflow_state
+  .patient-details
+    %h1 
+      Patient Record Detail
+    %p.date
+      %strong Last Updated: 
+      = Date.parse(@patient.updated_at.to_s).strftime("%m/%d/%Y")
+    %hr/
+    %p
+      %strong Date of Birth:
+      = Date.parse(@patient.dob.to_s).strftime("%m/%d/%Y") 
+    %p
+      %strong Gender:
+      = @patient.gender
+
       %p
         %strong Symptoms:
         = @patient.symptoms
-    
-      %p
-        %strong Gender:
-        = @patient.gender
-    
+
       %p
         %strong Blood Type:
         = @patient.blood_type
-    
-      %hr/
-    
-      %h3 Patient Details
-      
-      %h4 Medications
+  .workflow-links
+    - if @patient.checked_out?
+      = link_to "Pay Bill", pay_bill_patient_path(@patient), method: :patch
+    %hr/
 
-      %table
-        %thead
+    %h4 
+      Medications
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Dosage
+          %th Frequency
+      %tbody
+        - @medications.each do |medication|
           %tr
-            %th{width: 230} Name
-            %th{width: 230} Dosage
-            %th{width: 230} Frequency
-        %tbody
-          - @medications.each do |medication|
-            %tr
-              %td
-                = medication.name
-              %td
-                = medication.dosage
-              %td
-                = medication.frequency
-
-      %hr/
-      %h4 Doctor Information
-
-      %p
-        %strong Doctor:
-        - @patient.doctors.each do |doctor|
-          = doctor.name
+            %td
+              = medication.name
+            %td
+              = medication.dosage
+            %td
+              = medication.frequency
+    %p
+      %strong
+        = succeed ':' do
+          = "Doctor".pluralize(@patient.doctors.length)
+      - @patient.doctors.each do |doctor|
+        = doctor.name
 
       = form_for @doctor, url: create_doctor_patient_path(@patient) do |f|
-        = f.label :name, "Doctor's Name"
-        = f.text_field :name
-
-        %br/
-        = f.submit "Submit Doctor", class: "button small radius right"
-      %hr/
-      .row.text-right
-        .small-12.column
-          = link_to "Back to Patient List", patients_path, class: "button small radius"
-          = link_to 'Edit Details', edit_patient_path(@patient), class: "button small radius"
+        = f.label :name, "Add Doctor:"
+        = f.text_field :name, {:placeholder => "Enter name"}
+  
+    = link_to "Back to Patient List", patients_path, class: "button"
+    = link_to 'Edit Details', edit_patient_path(@patient), class: "button"
