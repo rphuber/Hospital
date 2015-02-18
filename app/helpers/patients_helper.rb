@@ -24,17 +24,21 @@ module PatientsHelper
       when 'waiting_room'
         link_to image_tag('icons/check-in.png'), check_in_patient_path(patient), method: :patch
       when 'checked_in'
-        link_to image_tag('icons/doctor.png'), see_doctor_patient_path(patient), method: :patch
-        link_to image_tag('icons/xray.png'), get_xray_patient_path(patient), method: :patch
-        link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(patient), method: :patch
+        [
+          (link_to image_tag('icons/doctor.png'), see_doctor_patient_path(patient), method: :patch),
+          (link_to image_tag('icons/xray.png'), get_xray_patient_path(patient), method: :patch),
+          (link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(patient), method: :patch)
+        ]
       when 'with_doctor'
         link_to image_tag('icons/xray.png'), get_xray_patient_path(patient), method: :patch
         link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(patient), method: :patch
         link_to image_tag('icons/check-out.png'), check_out_patient_path(patient), method: :patch
       when 'in_xray'
-        link_to image_tag('icons/doctor.png'), see_doctor_patient_path(patient), method: :patch
-        link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(patient), method: :patch
-        link_to image_tag('icons/check-out.png'), check_out_patient_path(patient), method: :patch
+        [
+          (link_to image_tag('icons/doctor.png'), see_doctor_patient_path(patient), method: :patch),
+          (link_to image_tag('icons/surgery.png'), enter_surgery_patient_path(patient), method: :patch),
+          (link_to image_tag('icons/check-out.png'), check_out_patient_path(patient), method: :patch)
+        ]
       when 'in_surgery'
         link_to image_tag('icons/xray.png'), get_xray_patient_path(patient), method: :patch
         link_to image_tag('icons/doctor.png'), see_doctor_patient_path(patient), method: :patch

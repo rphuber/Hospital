@@ -1,9 +1,9 @@
 =title "#{@patient.first_name} #{@patient.last_name}'s Detail"
 %article.type-system-rounded
-  %p.type= @patient.workflow_state
   .patient-details-container
     %h1 
       Patient Record Detail
+    %p.type= @patient.workflow_state
     .patient-details
       %p.date
         %strong Last Updated: 
